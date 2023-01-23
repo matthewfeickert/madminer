@@ -463,7 +463,7 @@ class MadMiner:
                 pdf_variation,
             )
         elif effect is SystematicType.SCALE:
-            scale_variation_string = ",".join((str(factor) for factor in scale_variations))
+            scale_variation_string = ",".join(str(factor) for factor in scale_variations)
             self.systematics[systematic_name] = Systematic(
                 systematic_name,
                 SystematicType.SCALE,

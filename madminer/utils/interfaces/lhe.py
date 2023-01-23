@@ -760,7 +760,7 @@ def _parse_txt_events(filename, sampling_benchmark):
     reset_event = False
 
     # Loop through lines in Event
-    with open(filename, "r") as file:
+    with open(filename) as file:
         for line in file.readlines():
             # Clean up line
             try:
@@ -853,7 +853,7 @@ def _parse_txt_events(filename, sampling_benchmark):
 
 def _parse_lhe_file_with_bad_chars(filename):
     # In some cases, the LHE comments can contain bad characters
-    with open(filename, "r") as file:
+    with open(filename) as file:
         for line in file:
             comment_pos = line.find("#")
             if comment_pos >= 0:
@@ -935,7 +935,7 @@ def _get_objects(particles, particles_truth, met_resolution=None, global_event_d
     visible_sum = MadMinerParticle.from_xyzt(0.0, 0.0, 0.0, 0.0)
 
     standard_ids = set(get_elementary_pdg_ids())
-    neutrino_ids = set(int(p.pdgid) for p in Particle.findall(lambda p: p.pdgid.is_sm_lepton and p.charge == 0))
+    neutrino_ids = {int(p.pdgid) for p in Particle.findall(lambda p: p.pdgid.is_sm_lepton and p.charge == 0)}
 
     for particle in particles:
         if particle.pdgid in standard_ids and particle.pdgid not in neutrino_ids:

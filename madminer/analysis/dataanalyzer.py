@@ -135,7 +135,7 @@ class DataAnalyzer:
         else:
             sampling_factors = np.ones(self.n_benchmarks_phys + 1)
 
-        for data in load_events(
+        yield from load_events(
             file_name=self.madminer_filename,
             start_index=start,
             final_index=end,
@@ -145,8 +145,7 @@ class DataAnalyzer:
             sampling_factors=sampling_factors,
             include_nuisance_params=include_nuisance_parameters,
             include_sampling_ids=return_sampling_ids,
-        ):
-            yield data
+        )
 
     def weighted_events(
         self,

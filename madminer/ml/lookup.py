@@ -15,7 +15,7 @@ def load_estimator(filename):
         model.load(filename)
 
     else:
-        with open(f"{filename}_settings.json", "r") as f:
+        with open(f"{filename}_settings.json") as f:
             settings = json.load(f)
         try:
             estimator_type = settings["estimator_type"]

@@ -511,7 +511,7 @@ def _load_benchmarks(file_name: str) -> Tuple[List[str], List[List[float]], List
             benchmark_names = file["benchmarks/names"][()]
             benchmark_values = file["benchmarks/values"][()]
         except KeyError:
-            raise IOError("Cannot read benchmarks from HDF5 file")
+            raise OSError("Cannot read benchmarks from HDF5 file")
         else:
             benchmark_names = _decode_strings(benchmark_names)
 
@@ -878,7 +878,7 @@ def _load_analysis_params(file_name: str) -> Dict[str, AnalysisParameter]:
             param_val_ranges = file["parameters/val_ranges"][()]
             param_transforms = file["parameters/transforms"][()]
         except KeyError:
-            raise IOError("Cannot read parameters from HDF5 file")
+            raise OSError("Cannot read parameters from HDF5 file")
         else:
             param_names = _decode_strings(param_names)
             param_lha_blocks = _decode_strings(param_lha_blocks)

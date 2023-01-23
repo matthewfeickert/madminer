@@ -146,7 +146,7 @@ class Estimator(ABC):
 
         # Load settings and create model
         logger.debug("Loading settings from %s_settings.json", filename)
-        with open(f"{filename}_settings.json", "r") as f:
+        with open(f"{filename}_settings.json") as f:
             settings = json.load(f)
         self._unwrap_settings(settings)
         self._create_model()

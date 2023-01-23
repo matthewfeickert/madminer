@@ -122,23 +122,23 @@ def create_weights(n_inputs, n_hiddens, n_comps=None):
     n_units = np.concatenate(([n_inputs], n_hiddens))
 
     for n0, n1 in zip(n_units[:-1], n_units[1:]):
-        w = nn.Parameter(tensor((rng.randn(n0, n1) / np.sqrt(n0 + 1))))
+        w = nn.Parameter(tensor(rng.randn(n0, n1) / np.sqrt(n0 + 1)))
         b = nn.Parameter(tensor(np.zeros((n1,))))
         ws.append(w)
         bs.append(b)
 
     if n_comps is None:
-        wm = nn.Parameter(tensor((rng.randn(n_units[-1], n_inputs) / np.sqrt(n_units[-1] + 1))))
-        wp = nn.Parameter(tensor((rng.randn(n_units[-1], n_inputs) / np.sqrt(n_units[-1] + 1))))
+        wm = nn.Parameter(tensor(rng.randn(n_units[-1], n_inputs) / np.sqrt(n_units[-1] + 1)))
+        wp = nn.Parameter(tensor(rng.randn(n_units[-1], n_inputs) / np.sqrt(n_units[-1] + 1)))
         bm = nn.Parameter(tensor(np.zeros((n_inputs,))))
         bp = nn.Parameter(tensor(np.zeros((n_inputs,))))
 
         return ws, bs, wm, bm, wp, bp
     else:
 
-        wm = nn.Parameter(tensor((rng.randn(n_units[-1], n_inputs, n_comps) / np.sqrt(n_units[-1] + 1))))
-        wp = nn.Parameter(tensor((rng.randn(n_units[-1], n_inputs, n_comps) / np.sqrt(n_units[-1] + 1))))
-        wa = nn.Parameter(tensor((rng.randn(n_units[-1], n_inputs, n_comps) / np.sqrt(n_units[-1] + 1))))
+        wm = nn.Parameter(tensor(rng.randn(n_units[-1], n_inputs, n_comps) / np.sqrt(n_units[-1] + 1)))
+        wp = nn.Parameter(tensor(rng.randn(n_units[-1], n_inputs, n_comps) / np.sqrt(n_units[-1] + 1)))
+        wa = nn.Parameter(tensor(rng.randn(n_units[-1], n_inputs, n_comps) / np.sqrt(n_units[-1] + 1)))
         bm = nn.Parameter(tensor(rng.randn(n_inputs, n_comps)))
         bp = nn.Parameter(tensor(rng.randn(n_inputs, n_comps)))
         ba = nn.Parameter(tensor(rng.randn(n_inputs, n_comps)))
@@ -167,5 +167,5 @@ def create_weights_conditional(n_conditionals, n_inputs, n_hiddens, n_comps):
 
     """
 
-    wx = nn.Parameter(tensor((rng.randn(n_conditionals, n_hiddens[0]) / np.sqrt(n_conditionals + 1))))
+    wx = nn.Parameter(tensor(rng.randn(n_conditionals, n_hiddens[0]) / np.sqrt(n_conditionals + 1)))
     return (wx,) + create_weights(n_inputs, n_hiddens, n_comps)

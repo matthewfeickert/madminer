@@ -10,7 +10,7 @@ Make sure the following tools are installed and running:
 
 For the detector simulation part, there are different options. For simple parton-level analyses, we provide a bare-bones
 option to calculate truth-level observables which do not require any additional packages. We have also implemented
-a fast detector simulation based on Delphes with a flexible framework to calculate observables. 
+a fast detector simulation based on Delphes with a flexible framework to calculate observables.
 Using this adds additional requirements:
 
 ```shell

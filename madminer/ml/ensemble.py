@@ -629,7 +629,7 @@ class Ensemble:
 
         # Load ensemble settings
         logger.debug("Loading ensemble setup from %s/ensemble.json", folder)
-        with open(f"{folder}/ensemble.json", "r") as f:
+        with open(f"{folder}/ensemble.json") as f:
             settings = json.load(f)
 
         self.n_estimators = int(settings["n_estimators"])

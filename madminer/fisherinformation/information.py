@@ -1081,7 +1081,7 @@ class FisherInformation(DataAnalyzer):
 
             # Find bins
             bins = np.searchsorted(bin_boundaries, histo_observables)
-            assert ((0 <= bins) & (bins < n_bins_total)).all(), "Wrong bin {}".format(bins)
+            assert ((0 <= bins) & (bins < n_bins_total)).all(), f"Wrong bin {bins}"
 
             # Add up
             for i in range(n_bins_total):
